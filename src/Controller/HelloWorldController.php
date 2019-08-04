@@ -24,9 +24,6 @@ class HelloWorldController extends ControllerBase {
     */
   public function __construct(HelloWorldSalutation $salutation) {
     $this->salutation = $salutation;
-    return [
-      '#markup' => $this->salutation->getSalutation(),
-    ];  
   }
 
   /**
@@ -36,5 +33,16 @@ class HelloWorldController extends ControllerBase {
     return new static(
       $container->get('hello_world.salutation')
     );
+  }
+
+  /**
+  * Hello World.
+  *
+  * @return string
+  */
+  public function helloWorld() {
+    return [
+      '#markup' => $this->salutation->getSalutation(),
+    ];
   }
 }
