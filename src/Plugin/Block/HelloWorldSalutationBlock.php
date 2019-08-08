@@ -5,6 +5,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\hello_world\HelloWorldSalutation as HelloWorldSalutationService;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
 * Hello World Salutation block.
@@ -59,4 +60,30 @@ class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPlu
       '#markup' => $this->salutation->getSalutation(),
     ];
   }
+
+  /**
+  * {@inheritdoc}
+  */
+  public function defaultConfiguration() {
+    return [
+    'enabled' => 1,
+    ];
+  }
+
+  /**
+  * {@inheritdoc}
+  */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $config = $this->getConfiguration();
+    $form['enabled'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enabled'),
+      '#description' => t('Check this box if you want to enable this
+      feature.'),
+      '#default_value' => $config['enabled'],
+    );
+    return $form;
+  }
+
+
 }
