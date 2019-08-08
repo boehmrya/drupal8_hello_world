@@ -56,6 +56,7 @@ class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPlu
   * {@inheritdoc}
   */
   public function build() {
+    //$config = $this->getConfiguration();
     return [
       '#markup' => $this->salutation->getSalutation(),
     ];
@@ -83,6 +84,13 @@ class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPlu
       '#default_value' => $config['enabled'],
     );
     return $form;
+  }
+
+  /**
+  * {@inheritdoc}
+  */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->configuration['enabled'] = $form_state->getValue('enabled');
   }
 
 
