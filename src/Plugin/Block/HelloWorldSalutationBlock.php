@@ -71,9 +71,11 @@ class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPlu
     ];
   }
 
+
   /**
   * {@inheritdoc}
   */
+  /*
   public function blockForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $form['enabled'] = array(
@@ -85,13 +87,16 @@ class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPlu
     );
     return $form;
   }
+  */
 
   /**
   * {@inheritdoc}
   */
+  /*
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->configuration['enabled'] = $form_state->getValue('enabled');
   }
+  */
 
 
 }
